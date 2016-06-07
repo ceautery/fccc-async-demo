@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="apiTest">
+<head>
+
+<script src="/angular/angular.min.js"></script>
+
+<script>
+
+angular.module('apiTest', [])
+	.factory('ApiService', function($http, $rootScope) {
+		return {
+			load: function() {
+				$http({	url: '/api', method: 'GET' })
+				.then(function(ret){ $rootScope.$broadcast('DataLoaded', ret.data) })
+			}
+		}
+	})
+
+	.controller('ApiCtrl', function($scope, ApiService) {
+		$scope.load = function() { ApiService.load() };
+		$scope.$on('DataLoaded', function(_, data) { $scope.data = data	})
+	})
+
+</script>
+</head>
+
+<body ng-controller="ApiCtrl">
+
+	<button ng-click="load()">Load</button>
+
+	<table ng-show="data">
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+
+		<tr ng-repeat="obj in data">
+			<td>{{obj.name}}</td>
+			<td>{{obj.val}}</td>
+		</tr>
+	</table>
+
+</body>
+</html>

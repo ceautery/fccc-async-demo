@@ -1,0 +1,19 @@
+{
+  "name": "ajax",
+  "version": "1.0.0",
+  "description": "fccc sample ajax webapps",
+  "main": "server.js",
+  "dependencies": {
+    "q": "^1.4.1",
+    "express": "^4.13.4",
+    "angular": "^1.5.6",
+    "jquery": "^2.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Curtis Autery",
+  "license": "ISC"
+}

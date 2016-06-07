@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<script>
+	function load() {
+		var x = new XMLHttpRequest();
+		// Ready states: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+		x.onreadystatechange = () => { if (x.readyState == 4) writeTable(JSON.parse(x.response)) }
+		x.open('get', '/api');
+		x.send()
+	}
+
+	function writeTable(list) {
+		var nodes = document.querySelectorAll('tr:not(:first-child)');
+		Array.from(nodes).forEach(row => row.remove());
+		var table = document.getElementById('t');
+		list.forEach(item => {
+			var row = document.createElement('tr');
+			row.innerHTML = '<td>' + item.name + '</td><td>' + item.val + '</td>'
+			table.appendChild(row);
+		})
+	}
+</script>
+<body>
+
+	<button onclick="load()">Load</button>
+
+	<table id="t">
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</table>
+
+</body>
+</html>
