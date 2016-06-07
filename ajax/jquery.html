@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<script src="jquery/jquery.min.js"></script>
+
+<script>
+	function load() { $.get('/api', writeTable) }
+
+	function writeTable(list) {
+		$('tr:not(:first-child)').remove();
+		$('#t').append(list.map(i => $('<tr>').html('<td>' + i.name + '</td><td>' + i.val + '</td>')));
+	}
+
+</script>
+<body>
+
+	<button onclick="load()">Load</button>
+
+	<table id="t">
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</table>
+
+</body>
+</html>
