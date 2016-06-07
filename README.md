@@ -22,3 +22,7 @@ spidey
 Six Degrees of Spidey, a Six Degrees of Bacon clone using Spiderman, Marvel characters, and connecting comic issues in place of Kevin Bacon, fellow actors and connecting movies. This illustrates API calls, but also a Node.js backend that handles asynchronous SQLite database work, and updates from the Marvel Comics API.
 
 
+socket
+======
+
+A demo of using websockets with Elm. This submodule is in rough shape, as it doesn't have end-user instructions for setting up a database, and was written prior to the introduction of Subscriptions, so much of the business with Signals can be rewritten to be simpler.
